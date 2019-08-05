@@ -1,5 +1,7 @@
-﻿Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lidgren.Network", "Lidgren.Network\Lidgren.Network.csproj", "{49BA1C69-6104-41AC-A5D8-B54FA9F696E8}"
 EndProject
@@ -14,6 +16,8 @@ Global
 		Release|Mixed Platforms = Release|Mixed Platforms
 		Release|x86 = Release|x86
 		Release-Unity|Any CPU = Release-Unity|Any CPU
+		Release-Unity|Mixed Platforms = Release-Unity|Mixed Platforms
+		Release-Unity|x86 = Release-Unity|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{49BA1C69-6104-41AC-A5D8-B54FA9F696E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -28,6 +32,10 @@ Global
 		{49BA1C69-6104-41AC-A5D8-B54FA9F696E8}.Release|x86.ActiveCfg = Release|Any CPU
 		{49BA1C69-6104-41AC-A5D8-B54FA9F696E8}.Release-Unity|Any CPU.ActiveCfg = Release-Unity|Any CPU
 		{49BA1C69-6104-41AC-A5D8-B54FA9F696E8}.Release-Unity|Any CPU.Build.0 = Release-Unity|Any CPU
+		{49BA1C69-6104-41AC-A5D8-B54FA9F696E8}.Release-Unity|Mixed Platforms.ActiveCfg = Release-Unity|Any CPU
+		{49BA1C69-6104-41AC-A5D8-B54FA9F696E8}.Release-Unity|Mixed Platforms.Build.0 = Release-Unity|Any CPU
+		{49BA1C69-6104-41AC-A5D8-B54FA9F696E8}.Release-Unity|x86.ActiveCfg = Release-Unity|Any CPU
+		{49BA1C69-6104-41AC-A5D8-B54FA9F696E8}.Release-Unity|x86.Build.0 = Release-Unity|Any CPU
 		{6691874A-1766-4A08-A72A-B1132FAB8E58}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{6691874A-1766-4A08-A72A-B1132FAB8E58}.Debug|Any CPU.Build.0 = Debug|x86
 		{6691874A-1766-4A08-A72A-B1132FAB8E58}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
@@ -40,8 +48,15 @@ Global
 		{6691874A-1766-4A08-A72A-B1132FAB8E58}.Release|x86.ActiveCfg = Release|x86
 		{6691874A-1766-4A08-A72A-B1132FAB8E58}.Release|x86.Build.0 = Release|x86
 		{6691874A-1766-4A08-A72A-B1132FAB8E58}.Release-Unity|Any CPU.ActiveCfg = Release|x86
+		{6691874A-1766-4A08-A72A-B1132FAB8E58}.Release-Unity|Mixed Platforms.ActiveCfg = Release|x86
+		{6691874A-1766-4A08-A72A-B1132FAB8E58}.Release-Unity|Mixed Platforms.Build.0 = Release|x86
+		{6691874A-1766-4A08-A72A-B1132FAB8E58}.Release-Unity|x86.ActiveCfg = Release|x86
+		{6691874A-1766-4A08-A72A-B1132FAB8E58}.Release-Unity|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9FD792A6-7128-4E2E-A6F7-C485596F3A85}
 	EndGlobalSection
 EndGlobal

@@ -52,7 +52,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release-Unity|AnyCPU' ">
-    <DebugType></DebugType>
+    <DebugType>
+    </DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release-Unity</OutputPath>
     <DefineConstants>TRACE;__CONSTRAINED__;UNITY</DefineConstants>
@@ -67,11 +68,8 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\..\..\..\..\Applications\Unity\Hub\Editor\2019.1.10f1\PlaybackEngines\iOSSupport\Managed\UnityEngine.CoreModule.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\..\..\..\Applications\Unity\Hub\Editor\2019.1.10f1\PlaybackEngines\iOSSupport\Managed\UnityEngine.dll</HintPath>
+      <HintPath>E:\Program Files\Unity\2019.1.13f1\Editor\Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
