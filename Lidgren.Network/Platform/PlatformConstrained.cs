@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Security.Cryptography;
 
 namespace Lidgren.Network
@@ -20,7 +21,30 @@ namespace Lidgren.Network
 			ulong seed = (ulong)Environment.TickCount + (ulong)seedInc;
 			return seed ^ ((ulong)(new object().GetHashCode()) << 32);
 		}
-		
+
+
+		//*********************************************************************************
+		// to replace UnityEngine.Network.player.externalIP:
+		private static IPAddress getExternalIP()
+		{
+			foreach (NetworkInterface ni in NetworkInterface.GetAllNetworkInterfaces())
+			{
+				if (ni.NetworkInterfaceType == NetworkInterfaceType.Wireless80211 || ni.NetworkInterfaceType == NetworkInterfaceType.Ethernet)
+				{
+					foreach (UnicastIPAddressInformation ip in ni.GetIPProperties().UnicastAddresses)
+					{
+						if (ip.Address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+						{
+							return ip.Address;
+						}
+					}
+				}
+			}
+			return null;
+		}
+		//*********************************************************************************
+
+
 		/// <summary>
 		/// Gets my local IPv4 address (not necessarily external) and subnet mask
 		/// </summary>
@@ -34,7 +58,8 @@ namespace Lidgren.Network
 				{
 					return null;
 				}
-				return IPAddress.Parse(UnityEngine.Network.player.externalIP);
+				return getExternalIP();
+				//return IPAddress.Parse(UnityEngine.Network.player.externalIP);
 			}
 			catch // Catch Access Denied errors
 			{
