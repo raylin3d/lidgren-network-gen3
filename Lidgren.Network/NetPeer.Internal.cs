@@ -46,10 +46,14 @@ namespace Lidgren.Network
 		/// </summary>
 		public Socket Socket { get { return m_socket; } }
 
-		/// <summary>
-		/// Call this to register a callback for when a new message arrives
-		/// </summary>
-		public void RegisterReceivedCallback(SendOrPostCallback callback, SynchronizationContext syncContext = null)
+#if UNITY || UNITY_ANDROID || UNITY_IOS
+        static private readonly object lidgrenSocketBindLock = new object();
+#endif
+
+        /// <summary>
+        /// Call this to register a callback for when a new message arrives
+        /// </summary>
+        public void RegisterReceivedCallback(SendOrPostCallback callback, SynchronizationContext syncContext = null)
 		{
 			if (syncContext == null)
 				syncContext = SynchronizationContext.Current;
@@ -116,13 +120,20 @@ namespace Lidgren.Network
 			}
 			m_lastSocketBind = now;
 
+#if (UNITY || UNITY_ANDROID || UNITY_IOS)
+            // mutex is not available in mobile Unity
+            lock (lidgrenSocketBindLock)
+#else
 			using (var mutex = new Mutex(false, "Global\\lidgrenSocketBind"))
-			{
+#endif
+            {
 				try
 				{
-					mutex.WaitOne();
+#if !(UNITY || UNITY_ANDROID || UNITY_IOS)
+                    mutex.WaitOne();
+#endif
 
-					if (m_socket == null)
+                    if (m_socket == null)
 						m_socket = new Socket(m_configuration.LocalAddress.AddressFamily, SocketType.Dgram, ProtocolType.Udp);
 
 					if (reBind)
@@ -156,7 +167,9 @@ namespace Lidgren.Network
 				}
 				finally
 				{
+#if !(UNITY || UNITY_ANDROID || UNITY_IOS)
 					mutex.ReleaseMutex();
+#endif
 				}
 			}
 
